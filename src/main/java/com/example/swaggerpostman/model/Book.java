@@ -1,10 +1,22 @@
-package model;
+package com.example.swaggerpostman.model;
+
+import javax.persistence.*;
 
 import java.util.Objects;
+
+@Entity
+@Table(schema = "public")
 public class Book {
+    @Id
+    @GeneratedValue
     private long id;
     private String name;
     private String author;
+
+    @ManyToOne
+    @JoinColumn(name = "reader_id")
+    private Reader reader;
+
 
     public long getId() {
         return id;
